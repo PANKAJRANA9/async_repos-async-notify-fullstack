@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: async-notify
+  datasource:   # ✅ directly under spring
+    url: "${SPRING_DATASOURCE_URL:jdbc:mysql://mysql:3306/async_notify?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}"
+    username: "${SPRING_DATASOURCE_USERNAME:async}"
+    password: "${SPRING_DATASOURCE_PASSWORD:async123}"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  rabbitmq:
+    host: "${SPRING_RABBITMQ_HOST:rabbitmq}"
+    port: 5672
+    username: guest
+    password: guest
+  data:
+    redis:
+      host: "${SPRING_DATA_REDIS_HOST:redis}"
+      port: 6379
